@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="93" height="155" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="level" tilewidth="16" tileheight="16">
+  <image source="area02_level_tiles.png" trans="ff00ff" width="256" height="192"/>
+ </tileset>
+ <layer name="Background2" width="93" height="155">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3bQQrCMBAF0FyreoKq26zs/c9hBilIQZDSTgi+B0Mgq+ETZjUpBQCATPXHO44j83z146ybO85RvxTn2WY8auZTq2erS+9Gdhgx73Av794fvRv5I3OrpdWtdyMAAAAAAAAAAAAAO8TO74j7vqOKvK/F7mmm2PeVdy5zJVfkHf8IvPM85kouMyXf+sZln898AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyvAAPLe6jPOEAAA==
+  </data>
+ </layer>
+ <layer name="Background" width="93" height="155">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3aTW6bQBiAYa4Vqxco9qKbrJqb9ARVbxTlcI0lI40Q2AzMDwzP4lEWwTZ++YKJmfeu694BABL6uYN9gBJKz/pHoPZ7P0P3/tvfwJLX7SP370jHMnf3ce+w+8eMvos/Pku3bd1tpnespcfnSN1z7Weq5muOUa0Zq929VvNa3WObtzTntbrvofndZabH27ffI3PbbnGd2KcfK97HksfMNR9/Bq19/i3d31YcozWevU6pOR//rf8quD/hPMdsu0XMDI/nbM3cvWpesvdZPGuud9nmegMAwLn0L35X+nuQ1j1rqnd6N72rNJ+6T7DH3i2t/biMuu+x99SsXIOftfdnS/e99H410y00H7rvofd4LcZU0+Gc2Gdqvpf7pLlNrX15dU8w9nvuZ9fEZ2x+7xfe20593yDmvHmW5jnFfk5pXrY3eqdskXvN1lF7z/2furXF50Ou7kftPez7vy7dNfAt6P2ZqcuRe99dMjbPsYbk6L2HRimb5zyvtNA7bJ6iT9g79Zy30nuQ4vyS8zzeWu+w+5ZZHze/dmWuF4/s3uzr0WhNp3HzPw8tzmdKl6D7mscP310Nva19Xd4tZm1+rucAAAAAAAAAAAAA9s/6TAAAqMO1OC0z30BqzisAsJzPTb0BAAAAAAAAAAAAAAAAAAAAAAAAAIA0/gOR/MWsPOEAAA==
+  </data>
+ </layer>
+ <layer name="Layer2" width="93" height="155">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3TSwqDMBRAUdfQz5LcSB3VHWT3VXQgFhRC+iTNOfDIyBCuSdcBAAAAADUapnmtK3E0j6d5PM3jaR5P83iaAwAAAC26TfNch7Lmtv3BPK472l/b3un7ZvQu4+heRzTud2sr9vd6XqPudKvNr6R5PM2vo3k8zeNpHk/zeJoDAAAA1G/M/O5d9BRtScHfsUiZcybnDeW+OxZn/yX3X3Ks9NsBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgzlj5/jVKle9fq/TD4dsHa34b8DzhAAA=
+  </data>
+ </layer>
+ <layer name="Layer1" width="93" height="155">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2dzY7rthmGhbbo4qS1gZxMF20zcwWRr6DZedlcQhctushB1gWSfVe56ZqoX8yjd0hJlEiJmvEHEJItWT8vP37/pPuu6863drq16631t/Z8317u+y/3LT+f0K73a5zvx3Vufz+ua13uv73eW+z3V7QXXPMaufeLnXfBsef7dz3uq/P1LD2+53P1aCec59fUOWecy2e72D5xfjGsr7gGcbziGnxPPivx6e23xPravX3XK65JXHQd9pvur2c/4Ts997l7izffQc/OvuBzkA/IH85jwl39oj4Xf5zte2LLe5Bn9B669gXX17XFC+pz8gRxjvWN8/K1G/Igee+5G44N9s3Jrs3xqWud7J48X+8r7HWc/OXjX/fkWPbzdH8+p2NPGUBZ4e9KHhbuKd7i+5Nf9f6UCT1+p+PkQ/3upRv2VQwb/ba3LfElxnwfvSvHK8ePyxB/dz927oZ9yvb51p6wfcIxPoMw0jG9I/HQeXpX4UKeZv/ovrz3Z/tuzr4/vx97SlyfTf12wpbjnrKPPES+oh48YSssw/abLk5fd0M5r31ej++gawp/9rtwZv8/jdx7LwrvzOen/uBnvZfrSh53Wav3/mrGM3AMUm47Xl93Q37Qs/AZ1G+tYU361A3tJ72Hy2LaZ5Q/rkup18Z4nBSw9DE4NjbIIxqb1I8t4x0ovANlhN7DeZ88rs+9nUtem4v30md+6oY2hmRQ63iLxDvib+FLP8ZtVJ1LeUSdvsW7a3wcBWcnyXbaH8KUepJyV412VjhvSoY/6JWCbCfGauRvYUw/1v34B+bzSbxOjPWZdqPLG8r6cKxVzH9za7/doP0u87loQ1BXuk9Kv9htyFYxl+6d21J+zVRbo19kD9NeoTxxzCVjWsX8KER547YN/SLa8A/M11PQrY45ed39kwfm6+jP3ZCfHXPGBBRveWC+nIQ3bXXZL8Scts5DtiyngLfzNX1PyhTa8A/Zspwkw4WxGm0XxoKFeeD5P3Tb2MF72NhzbPxc+zxQ4HHmQpg3cN/I8xyyaTwHrN8zdqyYt+Lf1A3uZ8kODfueT/AcQyq/kMozxL4bi2um8hpL7XPhzZgWc12MBwjz3n7D/GufaIxHMjYWy+sy13TUeNYYBZlCP4c2IWWIx1j4neeBGRN7tmtRF7MxjxHae8Q6kHhc2EgmvES2tGMu3VC2aJ+xMPE27SD1qX5HnMNvS/jSrZP0pnhPODD3Foud83v/LXPHxJ+5e+L7EXAm0VbxWCIx53HhHj4z786c/aUbyqcLrnmEXFotkj3u9VHCmDa69J3LZPI3axxS24/Ez07Cm7zn+XxiTVlMuU958VGxnEMBb9ZVcZ/2h3jc66C8Pu0Rb5kmyXDa4bSb3YbRfsym0/kPzMcpYC55QiwlN8jjlDX0W57t3FYw3yIXF/z8H2/ty33L/S+JZ/hj9yqf3d6gPCHOrAmUvUK7pRXMx4h1j8+RpjHtda1853BOeNefb+2X+5b7YfupG+o597GJ6wXX7bu3mFOf0ie9dvthPsbXHndamuv0+A77SX3B2Ab13HP3NucabA31C31K+i6yG1N5uj0x34OUuww4/LN762tfsZ/CxTH38eDxgBOOc7yNUas1D0sp4E7M/9UN6/CF3RTmsTp15ibO3VDvMkYwhfmn7m1dLf0AzgdgDF/v4PXml274TLr2luMtvBMx57OKL6cwpw4lf3stv7c5dovqnznuGCum/BK+U7X3se+29MvCOxFzj1PNxTxWz+KxKfJVTn2LeJ2+gfjadfVR9EPAPOAl2SJ7UJineICyJRZ3JSaM5fZdnk9EzHUP6SL6CeeRZ22NiLn752OYCHPK7R5blzcxOZSDucaPzxfSODsK3oEC5uHZJc8V55uqi6dsoZ4UJrTHU9s5mLMur7d99cVRZIrIZctcfiGf0w+jr0Rc2Kb0c+xenhuRHt3a7ihBxDxnfMbm9qTm9fnnXN+fc5nI6/ruSHIlEGXLVqR4WS7mzCcJ+6PhHYi24lYkDOdiLplO/dxSXDKXKFu2IsXiczCjT3pU3SnaC/Nc3Udely7eWq6Ujv9sFecJtATzQJqjGtoeclx2A9cg8Barl0vNidnyHTTvbolsCO/dgt7MmZOdS0vH09i4WYP5RyD2Z2ysxMbaHB/2yHZHK5Rjc8uHfWC+jnJsbtX0PjBfRzm8u9RuEdWaw5CTm26BcniXmHudR6z2w7deF8wYdG78zJ+L12EMucaY9D7O7ddceS7Mvc4jVvsxVgviNu+auADnMdD/qjX3STVDir+m7pHqi1x5rjzUTwua8I7ZRsqhzhlDsfEjnD93w1y3YtXqU+anPAfG71l3wnVUervWyc5hLcZYrm6uzU0+nVrXLTV/asoWnTOGUuNH1+Y8LH2XM99rbDvXX516zzF5/qudW9M+F3ZLxs+RbKkxHH+NnFvTVkz5cXN4rIW4wlzKxfyIObXWKAfHR7xlPYU5GMo7z8X8vcVbSvtpU9cLdmZOPPM9Yi69PVa3F7D594xrhXNiOon7uXrnyLIlxX+B7+a8z1zMS9ORY1ziF9ZnyudpHfOj8jnjA6zXnzveH5jnE+snc+ouRXtinvOsW823mBuXYuxlrHa5JcqV51xXWzLU694ZH1JcijEpHec8EM4X6PE7xao47+qC37PW+yj1Hoph5ta3MB6muKRifyXmt03VX3oMaw/+Fr9yvRv1P+vDhY94KacWOkWK2R5VLywlyWXOe5j7nxklYniqMWoV8xp6KMgI8nFu/WEJrEpdpwbRrqTekG5QDqG3z2d8x3k9PicjNw5aEvPwLH8pcK3SpNyZZO2S9aU9Fr1Gh5TEPPBCeK+9cB+LB+jZWrAnS2EuXbqnXKdec3uzlXkJWn9nKpc+N/aZO2+jNDGn7vK6Fbypd8ds4pz5ZLXnAIzZIEGGUN+N1SXsQbTpS2G0JH6Ta8cxR5DSf3vVlk+RdF4pzJWjyuVzzwlM/TdFSxjmUMBHeJeKn7PerVU7fS/SOoGcN14Kc/kdD8xfiesyMu63FiPJlZZshFZIthzXoyphT0t3tmIDt0L8bxGfV1sK8wferxTwVn6W+docPp+yix8y/JWEN3MrlOU5ddNcg0Q+tmR4q/+Jsce8DMlw8Tlza/LZ5q7fEovJx9bKmNOoyxUP8THoubkLzufzK8/Ha+fUAJQm+pvMk3M9l5JyQfcTVvQDmJ9ijtTnUjDX583zoz1aC7aT9Kaek+vCMQZfGnPKHGEpnc04n6/N5n6DMOUx5hO86dheuoVr0nM9BK51WIvPhfdYTsBlDccD7aoe50zNSd47PsD1o8XTXO+S/VEac8X0xnIXXj8wFa86gh3qa/NJfrImRZ9LY0591mKurgZJjnPdQ65Fx3litTBnLve9467cj2wt5qqpRxnbL425bH+OsfeKu3I/F2usM+Maf8K/VG4uEHPsmn95tHlwOeT/g6YxTp5nvZ/XIKXmseXWbtCfaS0/Vpr0vsQ1Zu+qH2SP1bLPZZOWxru1+uCYD8g5COwDyYDSmHOt0Rr8rboO6ina8+6zUqaeu7e+b2y9bMoL1gqfRlrsvuRz1iTUwFzXr6U7Y+twCVvqMM8VSI/Rxz3jeNjXek/ux5y6of2h/qDMcB/Ua3JrrM/hmG+pO8n/GmdcM4vxPPUZ1874KnItjVWudafGvtX9fKyxfzWGamC+p+6kH/yNfR/zuTle/Fmn1tbT/5HQJuF627LFY+OhJOacV7GHfehrYvD70nGOQMSd/ExbmXKphk/EmOIemKd4k+vJlCbmKIQp43SUd9KxJedweS18S/5nrXU4aR9Tfkh+M3YqvZ4zh4u/91g27U+Np/fqf5ICLsKS9g9juR6vzq11m1ofSPr7Pfv8TsTF7ckzPufKlpz7752z2ZP0P1+MnTOWW6u+8MhrCZQg2aDibfpMtWSu7PQWajD2XAeTtqR84BqyJRDzotTljF14jJ26mbKPtRmxeoETrh07b++xJt+AsYOaskU2DPuZmNE/T+WUx/Kksblta9e1KU3EvGT9eew+jO2k7Na98diC6DPV8P15H+aLaLdLZnwEvAPpP0DEb5Ln396Pf39rf7tvv73vLyH+J5vnAz8Kf5OoS8Xn33X/x/eHW/v7ffvdfX8JeT0XfbKPhreI/mqw5/6RaEvtLPE5Y/4fGW+R1qOgreZrDCyV9ayd3rtuszUSPwbsYzbXUpy8tij3Oi3lmWvkrWvwIH2iJddWvkf5yZhdrjFK/SxfSn422wX7Oldjm3HRWL5Z+Qfme+iTPXdxH582eSoPWIrWrn88Z3026STZX9zXuwsfYi2/lb6u+6/M8XhdAPOd7kfPWd+qZu5kje0/t888tpyzphfjA8w1e108a7ZLrYtQM96yBvNacQlRKv/sNlfpfHpNzNfyeS25N0WxNQhK6ruamK+ps95iXZK9aCnmY7GC77v163w/MH9LY7GCH7p5smHOeu4PzF8p4JWKF4QW8Jric8ZkZPtyv4V8Qw1airn0DH0B2avS83Mwp8+hprjDe81hr9WhsfrYuTYr14mjbyh/cW3e8D8jbc/Ywp4yk3EwyhPWJ+Su/zA3DhrjFda9vYx8Zr3zGeeIX7yW/bl7Gx/YE3PWUDLXrM85/z+zNuc1NWZLtT1lps8blg4lr6SejbwtfR0aazta/K/RQHuuLax6J+HtNWf6PkbqF8afGBOsHTdYQ3uv58w6O8pIyZdUTZLWwGXdpX5fQv/WpL0xD8TYYGrOpLeYjeN1RaG//mrt9xu90xi1gPkS8n5aE1vdmo6KeSn6b6TVpgfm459r0APz8c816CNiPub3b2HTf0TM5YsxNsc6gdo181vEW9bEk2rwHf8PQDFNzvFnrTjnF8qPYJ1G3w3rBC72O687YI1oTVJOlzHaOS3Gb2N98KduaIuP8ZnwGKtbj/kKU2vcp9Zj2TrewloxjmfWjrLehr4N59DnPiv/I8xj/Hva71vIc2HOuS2MfTLHobgn69ZZg5L7rFwboRVfaUvMWS/C2lGut0H+l17Td0eIGc6hLTGXLknJddYBeg3VWn5vibbCnPOJOA87ln+WjGF8VuezZv6o/L4l5lxn0GWK+oFxc19X4GSfj8rvwvzHe/uS2KaOx/b9s+xh2r5cE4BzQz2fqBwk86RHrwsQ5j/f2y+Jbep4bN8/0z739Z+dlyk/fN5uzNZpYZ71Ej80PPtPFRux9FoW2t60pcn/9OuoX1mrzzl5Z7snc9oaX5RvHEuXbqi79Xu3Z2kTxPzQF7sXfxPa/wA3ND2BPOEAAA==
+  </data>
+ </layer>
+ <layer name="Collision" width="93" height="155" opacity="0.87">
+  <properties>
+   <property name="invisible" value="true"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2X246kMAxE6f//6VVrtVrEwJCLXeVLHckP001I+XRImM9xHB+VSqVSqVQmdQdzbhYRep4Zm9n1Gbbz3zLs5I0M27dH5gxk8v2UOyPZfFdBzvFUd+59dq32L+fc/qs5R2DRv5zPYdW/nI+jdY5H+zmenf4rvrcgYDqvUDteZmH3GqV23MzA7tNjDUWH7bOT6y9sp918f2F77eL5jPxikW8sIy52vxf/GV1/bz7lexyL/UBrfI4d59H36AjnkaXTDOciok9r5ytjmM5R6xrx3FRxzphzJAPCOWvteGHtfNT79RqrjJFdn7F2/nn5/u5zi3zdnb/1MNtrVHc7eDm3ctTR+eo4hvMsVHGeidX8KOejc2ViNbucr8PIbe08G9mdZySD8+sYOcfMGcG51RmWxfl1HGONd3R+HsvG06HHb5h9P/ZGzuMy41HObZBzPEjnXu8EUd4xRpFzm/lWx1te+zYe6ZxZb3mRve3k8MxV1fnb/We53vtuvii+7/LO9GaNV4/RkHM8kZx3Qc6xzD6bFZ1b71vW+6Gc29xvNV82sp6/GTI+Ied45BxPNtf/mM26+z8OoqJTzTkSZF621wi+D4O8O5nZvbNgr5PozqM9a1au5Hw+zy6R1zrb8VOeXSLs64h91IJuztlYP0fs3ir5juQcvfda4pFp5wz3rChY51q9X2aHM3j0UcGLF15rR87v8Xpeqzz/HqCci794nkvy/ROLd4Gq7xMeWL1/Id6jvQqNnONB52L7Zbo+SPnYnrP4lnMboji3ysfyOEMU5xlcWcBcQ1nX6A7s/S/z3rBChDNJzuXcG4TT1QyWeK4tZHn6sIbtqqPzp3mylacLFDO9vnmQ8/X57z5/uvaa9S1/VOdo3vxZZ5Lz53k9M3k6Z/+eu8h5Hby9yPk9bC8dnZ9hrcXOzr+wnUcoFnLOQc7xRHRenWjOOxDJeSciOO+I934r3/cwnAusc+tcFcqS3XuzXWTzfRjce2Q821lH59frItRMb9agnO/w5Mt7bXZ2PjK3Rw45xyPneJjOWec7m9W+LM5yOV8bJ+fz7PaV1fnMmvEqBlbZVnph++7ofCdPV+dRexqhsvOo3tnZKj6/b0TI1mEfPRMlxyxZ/N4RORsCxu8k57//7TWnnD//7TVnN+fsM0DOeRW5x2h5Ojgfzcp22NH5yrwMKjv/bW4mGZ1H8LaDnOPJ7DyreznHI+d4KjhXqUbqDwPPcbI84QAA
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="93" height="155">
+  <object name="PlayerStart" type="PlayerStart" x="128" y="256" width="64" height="64"/>
+  <object name="Platform1" type="MoveableObject" x="224" y="2000" width="96" height="16"/>
+  <object name="Platform2" type="MoveableObject" x="32" y="1808" width="96" height="16"/>
+  <object name="Platform4" type="MoveableObject" x="288" y="2320" width="96" height="16"/>
+  <object name="Platform3" type="MoveableObject" x="32" y="2224" width="96" height="16"/>
+  <object name="HotButton1" type="HotButton" x="944" y="288" width="32" height="32"/>
+  <object name="HotButton2" type="HotButton" x="704" y="464" width="32" height="32"/>
+  <object name="Door1" type="RotatableObject" x="1024" y="80" width="16" height="112"/>
+  <object name="TrapDoor1" type="RotatableObject" x="800" y="320" width="80" height="16"/>
+  <object name="ColorBucket2" type="ColorBucket" x="352" y="368" width="32" height="32"/>
+  <object name="Tomato1/Apple1" type="Enemy" x="146" y="494" width="64" height="64"/>
+  <object name="Door2" type="RotatableObject" x="624" y="352" width="16" height="144"/>
+  <object name="PaintPuddle1" type="HazardousLiquid" x="960" y="496" width="112" height="16"/>
+  <object name="Bridge1" type="RotatableObject" x="384" y="688" width="16" height="176"/>
+  <object name="HotButton3" type="HotButton" x="352" y="832" width="32" height="32"/>
+  <object name="Rainbow1" type="Rainbow" x="768" y="800" width="64" height="96"/>
+  <object name="PaintPuddle2" type="HazardousLiquid" x="16" y="880" width="208" height="16"/>
+  <object name="PaintPuddle3" type="HazardousLiquid" x="384" y="912" width="192" height="16"/>
+  <object name="ColorBucket3" type="ColorBucket" x="960" y="720" width="32" height="32"/>
+  <object name="Door3" type="RotatableObject" x="1184" y="816" width="16" height="80"/>
+  <object name="HotButton4" type="HotButton" x="1136" y="864" width="32" height="32"/>
+  <object name="Door5" type="RotatableObject" x="1296" y="688" width="16" height="96"/>
+  <object name="HotButton5" type="HotButton" x="1248" y="752" width="32" height="32"/>
+  <object name="Door4" type="RotatableObject" x="1104" y="656" width="112" height="16"/>
+  <object name="Grape1" type="Enemy" x="608" y="768" width="96" height="96"/>
+  <object name="Tomato2/Apple2" type="Enemy" x="944" y="832" width="64" height="64"/>
+  <object name="TrapDoor2.1" type="RotatableObject" x="976" y="1008" width="80" height="16"/>
+  <object name="TrapDoor2.2" type="RotatableObject" x="1056" y="1008" width="80" height="16"/>
+  <object name="ColorBucket4" type="ColorBucket" x="1040" y="944" width="32" height="224"/>
+  <object name="HotButton6" type="HotButton" x="832" y="976" width="32" height="32"/>
+  <object name="YellowPepper1" type="Enemy" x="960" y="1104" width="64" height="64"/>
+  <object name="YellowPepper2" type="Enemy" x="704" y="1344" width="64" height="64"/>
+  <object name="Tomato3" type="Enemy" x="1088" y="1520" width="64" height="64"/>
+  <object name="Tomato4" type="Enemy" x="1328" y="2032" width="64" height="64"/>
+  <object name="Door5" type="RotatableObject" x="496" y="976" width="16" height="128"/>
+  <object name="Door6" type="RotatableObject" x="496" y="1152" width="16" height="128"/>
+  <object name="Door4" type="RotatableObject" x="720" y="944" width="16" height="96"/>
+  <object name="HotButton8" type="HotButton" x="832" y="1184" width="32" height="32"/>
+  <object name="DeadlySpikes" type="DeadlySpikes" x="208" y="2032" width="128" height="32"/>
+  <object name="DeadlySpikes" type="DeadlySpikes" x="16" y="1856" width="112" height="32"/>
+  <object name="PaintPuddle4" type="HazardousLiquid" x="16" y="2432" width="368" height="16"/>
+  <object name="ColorBucket6" type="ColorBucket" x="640" y="1952" width="32" height="224"/>
+  <object name="ColorBucket8" type="ColorBucket" x="800" y="2416" width="32" height="32"/>
+  <object name="Carrot1" type="Enemy" x="1152" y="2224" width="64" height="64"/>
+  <object name="ColorBucket7" type="ColorBucket" x="1440" y="2256" width="32" height="32"/>
+  <object name="LevelEnd" type="LevelEnd" x="1440" y="2336" width="48" height="112"/>
+  <object name="Door/Bridge7" type="RotatableObject" x="960" y="1984" width="16" height="112"/>
+  <object name="Door8" type="RotatableObject" x="624" y="2208" width="96" height="16"/>
+  <object name="HotButton10" type="HotButton" x="992" y="2416" width="32" height="32"/>
+  <object name="Door9" type="RotatableObject" x="1280" y="2336" width="16" height="112"/>
+  <object name="HotButton11" type="HotButton" x="1440" y="2064" width="32" height="32"/>
+  <object name="HotButton7" type="HotButton" x="512" y="1072" width="32" height="32"/>
+  <object name="HotButton9" type="HotButton" x="512" y="1248" width="32" height="32"/>
+  <object name="ColorBucket5" type="ColorBucket" x="1232" y="1552" width="32" height="32"/>
+ </objectgroup>
+</map>
