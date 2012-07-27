@@ -2,6 +2,7 @@ package tiled.test;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Polygon;
@@ -13,17 +14,21 @@ public class Player {
 	private boolean withinColorBucketReach = false;
 	private boolean moveDirection = true; // false = left | true = right
 	private boolean isStanding = true;    // false = duck | true = stand
+	private int hatIndex = 1;
 	private Animation[] animations = new Animation[4];
 	private Polygon[] boundingBoxes = new Polygon[2];
+	private Image[] hats = new Image[4];
+	private Image[] brush = new Image[4];
+	private Image[] brushPaint = new Image[4];
 	private Vector2f position = new Vector2f(320.0f, 240.0f);
 	private Color color = new Color(Color.white);
 	
-	public Player(String spriteSheetRef, Vector2f startingPoint)
+	public Player(String spriteSheetRef, String hatImageRef, Vector2f startingPoint)
 	{
 		super();
 		position.set(startingPoint);
 		
-		// exact bounding boxes, which won't collide like exacted
+		// exact bounding boxes, which won't collide like expected
 //		boundingBoxes[0] = new Polygon(	new float[] {10, 4, 48, 4, 48,64, 10,64} ); // bounding box while standing
 //		boundingBoxes[1] = new Polygon(	new float[] {12,16, 64,16, 64,64, 10,64} ); // bounding box while ducking
 		
@@ -35,26 +40,63 @@ public class Player {
 //		boundingBoxes[1] = new Polygon(	new float[] {16,16,	64,16, 64,64, 16,64} ); // bounding box while ducking
 		
 		try {
-			SpriteSheet sheet = new SpriteSheet(spriteSheetRef, 64, 64);
+			final SpriteSheet animationSheet = new SpriteSheet(spriteSheetRef, 64, 64);
+			final SpriteSheet hatSheet = new SpriteSheet(hatImageRef, 64, 64);
+			final SpriteSheet brushSheet = new SpriteSheet(Game.BRUSH_SHEET_REF, 64, 64);
+			final SpriteSheet brushPaintSheet = new SpriteSheet(Game.BRUSH_PAINT_SHEET_REF, 64, 64);
+			
+			hats[0] = hatSheet.getSprite(0, hatIndex).copy();
+			hats[1] = hatSheet.getSprite(0, hatIndex).getFlippedCopy(true, false);
+			hats[2] = hatSheet.getSprite(1, hatIndex).copy();
+			hats[3] = hatSheet.getSprite(1, hatIndex).getFlippedCopy(true, false);
+			
+			brush[0] = brushSheet.getSprite(0, 0).copy();
+			brush[1] = brushSheet.getSprite(0, 0).getFlippedCopy(true, false);
+			brush[2] = brushSheet.getSprite(1, 0).copy();
+			brush[3] = brushSheet.getSprite(1, 0).getFlippedCopy(true, false);
+			
+			brushPaint[0] = brushPaintSheet.getSprite(0, 0).copy();
+			brushPaint[1] = brushPaintSheet.getSprite(0, 0).getFlippedCopy(true, false);
+			brushPaint[2] = brushPaintSheet.getSprite(1, 0).copy();
+			brushPaint[3] = brushPaintSheet.getSprite(1, 0).getFlippedCopy(true, false);
+			
 			for (int i = 0; i < animations.length; ++i)
 			{
 				animations[i] = new Animation();
 				animations[i].setAutoUpdate(false);
 			}
-			final int frameCount = sheet.getWidth() >> 6; // (sheet.getWidth() / 64)
-			for (int frame = 0; frame < frameCount; ++frame)
+
+			for (int frame = 0; frame < animationSheet.getHorizontalCount(); ++frame)
 			{
-				animations[0].addFrame(sheet.getSprite(frame, 0), 150);								// walking right
-				animations[1].addFrame(sheet.getSprite(frame, 0).getFlippedCopy(true, false), 150); // walking left
-				animations[2].addFrame(sheet.getSprite(frame, 1), 150);								// ducking right
-				animations[3].addFrame(sheet.getSprite(frame, 1).getFlippedCopy(true, false), 150); // ducking left
+				animations[0].addFrame(animationSheet.getSprite(frame, 0), 150);							 // walking right
+				animations[1].addFrame(animationSheet.getSprite(frame, 0).getFlippedCopy(true, false), 150); // walking left
+				animations[2].addFrame(animationSheet.getSprite(frame, 1), 150);							 // ducking right
+				animations[3].addFrame(animationSheet.getSprite(frame, 1).getFlippedCopy(true, false), 150); // ducking left
 			}
 		} catch (SlickException e) {
 			e.printStackTrace();
 			//TODO: run around and scream!
 		}
 	}
-	
+
+	public void switchHat()
+	{
+		try {
+			
+			final SpriteSheet hatSheet = new SpriteSheet(Game.HAT_SHEET_REF, 64, 64);
+			
+			++hatIndex;
+			if (hatIndex >= hatSheet.getVerticalCount()-1) { hatIndex = 0; }
+			
+			hats[0] = hatSheet.getSprite(0, hatIndex).copy();
+			hats[1] = hatSheet.getSprite(0, hatIndex).getFlippedCopy(true, false);
+			hats[2] = hatSheet.getSprite(1, hatIndex).copy();
+			hats[3] = hatSheet.getSprite(1, hatIndex).getFlippedCopy(true, false);
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public boolean isWithinHotButtonReach() { return withinHotButtonReach; }
 	public void setWithinHotButtonReach(boolean withinHotButtonReach) { this.withinHotButtonReach = withinHotButtonReach; }
@@ -108,27 +150,39 @@ public class Player {
 		{
 			if (moveDirection) // false = left | true = right
 			{
-				animations[0].draw(position.x, position.y, color); // walking right
+				animations[0].draw(position.x, position.y); // walking right
+				hats[0].draw(position.x, position.y);
+				brush[0].draw(position.x, position.y);
+				brushPaint[0].draw(position.x, position.y, color);
 			}
 			else
 			{
-				animations[1].draw(position.x, position.y, color); // walking left
+				animations[1].draw(position.x, position.y); // walking left
+				hats[1].draw(position.x, position.y);
+				brush[1].draw(position.x, position.y);
+				brushPaint[1].draw(position.x, position.y, color);
 			}
 		}
 		else
 		{
 			if (moveDirection) // false = left | true = right
 			{
-				animations[2].draw(position.x, position.y, color); // ducking right
+				animations[2].draw(position.x, position.y); // ducking right
+				hats[2].draw(position.x, position.y);
+				brush[2].draw(position.x, position.y);
+				brushPaint[2].draw(position.x, position.y, color);
 			}
 			else
 			{
-				animations[3].draw(position.x, position.y, color); // ducking left
+				animations[3].draw(position.x, position.y); // ducking left
+				hats[3].draw(position.x, position.y);
+				brush[3].draw(position.x, position.y);
+				brushPaint[3].draw(position.x, position.y, color);
 			}
 		}
 	}
 	
-	public void updateAnimation(long delta)
+	public void update(long delta)
 	{
 		/* animation indexes:	0 = walking right
 		 *						1 = walking left

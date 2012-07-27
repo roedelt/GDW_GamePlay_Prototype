@@ -16,16 +16,22 @@ public abstract class GameObject {
 		super();
 		this.shape = s;
 		this.color = color;
-		this.shapeFill =
-			new GradientFill( s.getX(), s.getY(), Color.lightGray,
-							  s.getMaxX(), s.getMaxY(), color);
+		if (this.shape != null)
+		{
+			this.shapeFill =
+				new GradientFill( s.getX(), s.getY(), Color.lightGray,
+								  s.getMaxX(), s.getMaxY(), color);
+		}
 	};
 	
 	public abstract void update (long delta);
 	public void draw(Graphics g)
 	{
-		g.fill(shape, shapeFill);
-		g.draw(shape, shapeFill);
+		if (this.shape != null)
+		{
+			g.fill(shape, shapeFill);
+			g.draw(shape, shapeFill);
+		}
 	}
 	
 	public Color getColor() { return color; }

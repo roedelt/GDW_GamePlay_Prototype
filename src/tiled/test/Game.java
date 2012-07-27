@@ -1,5 +1,7 @@
 package tiled.test;
 
+import java.io.Console;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
@@ -9,7 +11,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Polygon;
-import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Vector2f;
 
 import tiled.test.blocks.Block;
 import tiled.test.blocks.BlockMap;
@@ -18,38 +21,53 @@ import tiled.test.entities.ColorBucket;
 import tiled.test.entities.HotButton;
 import tiled.test.entities.MoveableObject;
 import tiled.test.entities.RotatableObject;
+import tiled.test.entities.StaticSprite;
 
 public class Game extends BasicGame {
- 
+	public final static String GAME_TITLE = "DreamGuards - Gameplay Prototype";
+	public final static String DEFAULT_IMAGE_PATH = "./data/assets/staticSprites/default.png";
+	public final static String[] ICON_REF_ARRAY = { "./data/assets/staticSprites/icon/teddy_icon_16.png",
+													//"./data/assets/staticSprites/icon/teddy_icon_24.png",
+													"./data/assets/staticSprites/icon/teddy_icon_32.png",
+													"./data/assets/staticSprites/icon/teddy_icon_48.png"};
+	
+	public static final String BRUSH_SHEET_REF       = "data/assets/spritesheets/brush_sheet.png";
+	public static final String BRUSH_PAINT_SHEET_REF = "data/assets/spritesheets/brush_paint_sheet.png";
+	public static final String HAT_SHEET_REF         = "data/assets/spritesheets/hat_sheet.png";
+	
 	private Player playerOne;
 	@SuppressWarnings("unused")	private BlockMap map;
 	private Camera camera;
-	private Image background;
 	private final static int SCREEN_WIDTH  = 800;
 	private final static int SCREEN_HEIGHT = 600;
+	private Rectangle miniMapRect = new Rectangle(SCREEN_WIDTH - SCREEN_WIDTH/4, 0, SCREEN_WIDTH%4, SCREEN_HEIGHT/4);
 	
+	/** debug variables */
 	private boolean disregardCollisions = false;
+	private boolean drawBoundingBoxes = false;
+	private boolean vsyncOn = true;
 	
 	float grav = 0;
  
 	public Game() {
-		super("one class barebone game");
+		super(GAME_TITLE);
 	}
 	
 	public void init(GameContainer container) throws SlickException {
-		container.setVSync(true);
-		container.setShowFPS(false);
+		container.setVSync(vsyncOn);
+		container.setShowFPS(!vsyncOn);
+		container.setIcons(ICON_REF_ARRAY);
 		
 		// load tiled map
 		//map = new BlockMap("data/level01.tmx");
 //		map = new BlockMap("data/testKarte.tmx");
-		map = new BlockMap("data/Karte_proto.tmx");
+		map = new BlockMap("data/map/Karte_proto.tmx");
 		
 		// create background image
 //		background = new Image("data/area02_bkg0.jpg");
 		
 		// create PlayerEntity
-		playerOne = new Player("data/teddy_anim.png", BlockMap.getPlayerStart());
+		playerOne = new Player("./data/assets/spritesheets/teddy_anim.png", "./data/assets/spritesheets/hat_sheet.png", BlockMap.getPlayerStart());
 		
 		// get an array of all visible map layers
 		camera = new Camera(container, BlockMap.tmap, BlockMap.getVisibleLayers());
@@ -60,11 +78,28 @@ public class Game extends BasicGame {
 		{
 			container.exit();
 		}
+		
+		/** DEBUG-MODE CHECK INPUT */
 		if (container.getInput().isKeyPressed(Input.KEY_F2))
 		{
 			disregardCollisions = !disregardCollisions;
 		}
+		if (container.getInput().isKeyPressed(Input.KEY_F3))
+		{
+			drawBoundingBoxes = !drawBoundingBoxes;
+		}
+		if (container.getInput().isKeyPressed(Input.KEY_F4))
+		{
+			vsyncOn = !vsyncOn;
+			container.setVSync(vsyncOn);
+			container.setShowFPS(!vsyncOn);
+		}
+		if (container.getInput().isKeyPressed(Input.KEY_F5))
+		{
+			playerOne.switchHat();
+		}
 		
+		/** check if the player is within range to reach any ColorBucket or press any HotButton */
 		Polygon playerPoly = playerOne.getBoundingPolygon();
 		
 		// check if there's a button within the players reach
@@ -87,6 +122,11 @@ public class Game extends BasicGame {
 				playerOne.setWithinColorBucketReach(true);
 				break;
 			}
+		}
+		
+		for (ColorBucket bucket : BlockMap.colorBucketList)
+		{
+			bucket.update(delta);
 		}
 		
 		// rotate objects
@@ -118,7 +158,7 @@ public class Game extends BasicGame {
 		/* Input Handling */
 		if (handleInput(container.getInput(), delta))
 		{
-			playerOne.updateAnimation(delta);
+			playerOne.update(delta);
 		}
 		else
 		{
@@ -232,7 +272,7 @@ public class Game extends BasicGame {
 	public void render(GameContainer container, Graphics g)  {
 		
 		// draw background image
-		//g.fillRect(0.0f, 0.0f, container.getWidth(), container.getHeight());
+		g.fillRect(0.0f, 0.0f, container.getWidth(), container.getHeight());
 		//background.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 		//in the render()-method
@@ -249,41 +289,96 @@ public class Game extends BasicGame {
 			final String str = new String("there's a ColorBucket!!");
 			g.drawString(str, ((container.getWidth() >> 1) - (g.getFont().getWidth(str) >> 1)), 10);
 		}
+
+		/** --- DEBUG-MODE OVERLAY --- */
+		final int lineHeight = g.getFont().getLineHeight();
+		int heightMultiplier = 0;
 		if (disregardCollisions)
 		{
 			final String str = new String("NoClip mode");
-			g.drawString(str, ((container.getWidth()) - (g.getFont().getWidth(str))), 10);
+			g.drawString(str, ((container.getWidth()) - (g.getFont().getWidth(str))), heightMultiplier * lineHeight);
+			++heightMultiplier;
 		}
-
+		if (drawBoundingBoxes)
+		{
+			final String str = new String("draw BoundingBoxes");
+			g.drawString(str, ((container.getWidth()) - (g.getFont().getWidth(str))), heightMultiplier * lineHeight);
+			++heightMultiplier;
+		}
+		if (!vsyncOn)
+		{
+			final String str = new String("VSync off");
+			g.drawString(str, ((container.getWidth()) - (g.getFont().getWidth(str))), heightMultiplier * lineHeight);
+			++heightMultiplier;
+		}
+		
+		
 		// re-translate everything, so it will be in its real position
 		camera.translateGraphics();
 		
-		g.setColor(Color.orange);
-		g.setLineWidth(1.0f);
-		g.draw(playerOne.getBoundingPolygon());
+		
+		/** --- DEBUG-MODE DRAW BOUNDING BOXES --- */
+		if (drawBoundingBoxes)
+		{
+			BlockMap.tmap.render(0, 0, BlockMap.tmap.getLayerIndex("Collision"));
+			g.setColor(Color.orange);
+			g.draw(playerOne.getBoundingPolygon());
+		}
+		
+//		g.setColor(Color.orange);
+//		g.setLineWidth(1.0f);
+//		g.draw(playerOne.getBoundingPolygon());
 
+		for (StaticSprite spr : BlockMap.staticSpriteList)
+		{
+			spr.draw(g);
+		}
+		
 		for (HotButton button : BlockMap.hotButtonList)
 		{
 			button.draw(g);
+			if (drawBoundingBoxes) { g.draw(button.getShape()); }
 		}
 		
 		for (ColorBucket bucket : BlockMap.colorBucketList)
 		{
 			bucket.draw(g);
+			if (drawBoundingBoxes) { g.draw(bucket.getShape()); }
 		}
 		
 		for (RotatableObject rotO : BlockMap.rotatableObjectList)
 		{
 			rotO.draw(g);
+			if (drawBoundingBoxes) { g.draw(rotO.getShape()); }
 		}
 		
 		for (MoveableObject movO : BlockMap.moveableObjectList)
 		{
 			movO.draw(g);
+			if (drawBoundingBoxes) { g.draw(movO.getShape()); }
 		}
 		
 		// render player animation
 		playerOne.drawAnimation();
+		
+		/** minimap - not functional... */
+//		
+//		g.setColor(Color.pink);
+//		g.fillRect(miniMapRect.getMinX(), miniMapRect.getMinY(), miniMapRect.getMaxX(), miniMapRect.getMaxY());
+//		
+//		camera.untranslateGraphics();
+//		g.pushTransform();
+//		
+//		float scaleX = (float)(container.getWidth() >> 2)  / (float)(container.getWidth());
+//		float scaleY = (float)(container.getHeight() >> 2) / (float)container.getHeight();
+//		int miniMapPosX = (int)(container.getWidth() - (container.getWidth() * scaleX));
+//		g.scale(scaleX, scaleY);
+//		camera.centerOn(miniMapRect);
+//		camera.drawMap();
+//		camera.centerOn(playerOne.getBoundingPolygon());
+//		
+//		g.popTransform();
+//		camera.translateGraphics();
 		
 		// reset graphics device
 		g.setColor(Color.white);
